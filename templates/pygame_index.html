@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pygame in Flask</title>
+</head>
+<body>
+    <h1>Pygame Output</h1>
+    <img id="gameImage" src="{{ url_for('game') }}" alt="Game Output">
+    
+    <script>
+        function refreshImage() {
+            var image = document.getElementById('gameImage');
+            var timestamp = new Date().getTime();
+            image.src = "{{ url_for('game') }}" + "?t=" + timestamp;
+        }
+
+        setInterval(refreshImage, 500); // Refresh image every 100 milliseconds (0.1 second)
+    </script>
+    <br>
+    <b><a href="/">Main</a></b>
+</body>
+</html>
